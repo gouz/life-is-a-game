@@ -1,0 +1,17 @@
+{
+  "HTMLElements": {
+    "background": "board-background"
+  },
+  "board": {
+    "width": 1280,
+    "height": 720
+  },
+  "dimensions": {
+    "items": {
+      "width": 64,
+      "shiftX": 256,
+      "shiftY": 200
+    }
+  },
+  "ratio": 0.6
+}
