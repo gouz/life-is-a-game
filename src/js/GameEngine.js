@@ -26,8 +26,8 @@ export default class GameEngine {
       });
       this._player.drawImage(
         this._loader.fetchImg(this._player.getImage()),
-        0,
-        0
+        config.player.initialX,
+        config.player.initialY
       );
     });
   }
