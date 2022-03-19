@@ -18,7 +18,8 @@
     "items": {
       "width": 64,
       "shiftX": 256,
-      "shiftY": 200
+      "shiftY": 200,
+      "shiftZ": 80
     }
   },
   "ratio": 0.6

@@ -25,12 +25,14 @@ export default class GameEngine {
     this._level = level;
     this._loader.prepare().then(() => {
       levels[this._level].background.forEach((row, y) => {
-        let nbColTemp = 0;
-        row.forEach((col, x) => {
-          this._background.drawImage(this._loader.fetchImg(col), x, y);
-          nbColTemp++;
+        row.forEach((step, z) => {
+          let nbColTemp = 0;
+          step.forEach((col, x) => {
+            this._background.drawImage(this._loader.fetchImg(col), x, y, z);
+            nbColTemp++;
+          });
+          if (nbColTemp > this._nbCol) this._nbCol = nbColTemp;
         });
-        if (nbColTemp > this._nbCol) this._nbCol = nbColTemp;
         this._nbRow++;
       });
       this._nbCol -= 1;

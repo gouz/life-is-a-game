@@ -16,7 +16,7 @@ export default class CanvasDrawer {
     this._customShiftY = 0;
   }
 
-  drawImage(image, posX, posY) {
+  drawImage(image, posX, posY, posZ = 0) {
     this._ctx.drawImage(
       image,
       (posX - posY) * this._newX -
@@ -27,7 +27,8 @@ export default class CanvasDrawer {
       (posX + posY) * this._shift -
         config.dimensions.items.shiftY * config.ratio +
         this._shift +
-        this._customShiftY * this._newX * config.ratio
+        this._customShiftY * this._newX * config.ratio -
+        posZ * config.dimensions.items.shiftZ * config.ratio
     );
   }
 
