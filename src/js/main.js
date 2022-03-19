@@ -1,4 +1,4 @@
 import "../less/main.less";
 import GameEngine from "./GameEngine";
 
-new GameEngine("nyons");
+window.gouz_ge = new GameEngine("nyons");
