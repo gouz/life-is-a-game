@@ -1,11 +1,13 @@
 {
   "HTMLElements": {
-    "background": "board-background"
+    "background": "board-background",
+    "player": "board-player"
   },
   "board": {
     "width": 1280,
     "height": 720
   },
+  "player": { "src": "astronautA", "shiftX": 0, "shiftY": -2 },
   "dimensions": {
     "items": {
       "width": 64,

@@ -15,8 +15,18 @@ body {
   @apply p-20;
   @apply rounded-lg;
   @apply shadow-lg;
+  @apply relative;
 
   canvas {
-    @apply border border-white border-opacity-10 rounded-lg;
+    @apply border border-white border-opacity-10;
+    @apply absolute;
+
+    &#board-background {
+      @apply z-0;
+    }
+
+    &#board-player {
+      @apply z-10;
+    }
   }
 }
