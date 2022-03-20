@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import Background from "./Background";
 import Player from "./Player";
 import "./Keyboard.js";
+import GamePad from "./Gamepad";
 
 export default class GameEngine {
   constructor(startLevel) {
@@ -20,6 +21,7 @@ export default class GameEngine {
     this._avatarPosY = 0;
     this._nbRow = 0;
     this._nbCol = 0;
+    this._gamepad = new GamePad();
   }
   _drawLevel(level) {
     this._level = level;
