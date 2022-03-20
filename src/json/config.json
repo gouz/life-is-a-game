@@ -1,7 +1,8 @@
 {
   "HTMLElements": {
     "background": "board-background",
-    "player": "board-player"
+    "player": "board-player",
+    "foreground": "board-foreground"
   },
   "board": {
     "width": 1280,

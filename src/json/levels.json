@@ -19,7 +19,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -40,7 +40,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -61,7 +61,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -82,7 +82,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -103,7 +103,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -124,7 +124,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -145,7 +145,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -166,7 +166,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -187,7 +187,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -208,7 +208,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -229,7 +229,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -250,7 +250,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -271,7 +271,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -292,7 +292,7 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
-          "ground_riverRocks_NE"
+          "cliff_block_rock_SE"
         ]
       ],
       [
@@ -313,12 +313,371 @@
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
           "cliff_block_rock_SE",
+          "cliff_block_rock_SE"
+        ]
+      ]
+    ],
+    "elements_back": [
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "ground_riverRocks_NE"
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
           "ground_riverRocks_NE"
         ]
       ]
     ],
-    "elements_back": [],
-    "elements_front": [],
+    "elements_front": [
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "tree_oak_NE",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "tree_oak_NE",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    ],
     "next": {
       "west": "montelimar"
     }
