@@ -2,4 +2,4 @@
 
 A game engine in JS
 
-Illusations by https://www.kenney.nl/
+Illustrations by https://www.kenney.nl/
