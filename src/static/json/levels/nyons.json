@@ -1,0 +1,175 @@
+{
+  "drawings": {
+    "0_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "1_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "2_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "3_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "4_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "5_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "6_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "7_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "8_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "9_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "10_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "11_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "12_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "13_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "14_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "15_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "16_0_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "0_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "1_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "2_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "3_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "4_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "5_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "6_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "7_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "8_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "9_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "10_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "11_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": ["tree_oak_NE"]
+    },
+    "12_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": ["rock_largeD_SW"],
+      "foregrounds": [],
+      "collision": 1
+    },
+    "13_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "14_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "15_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    },
+    "16_1_0": {
+      "ground": "cliff_block_rock_SE",
+      "backgrounds": [],
+      "foregrounds": []
+    }
+  }
+}

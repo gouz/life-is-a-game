@@ -1,6 +1,6 @@
 import config from "../json/config.json";
 import items from "../json/items.json";
-import levels from "../json/levels.json";
+// import levels from "../json/levels.json";
 import Loader from "./Loader";
 import Decor from "./Decor";
 import Player from "./Player";
@@ -23,41 +23,39 @@ export default class GameEngine {
     this._nbRow = 0;
     this._nbCol = 0;
     this._gamepad = new GamePad();
+    this._collisionMap = [];
   }
-  _drawBackground() {
-    levels[this._level].background.forEach((row, y) => {
-      row.forEach((step, z) => {
-        let nbColTemp = 0;
-        step.forEach((col, x) => {
-          this._background.drawImage(this._loader.fetchImg(col), x, y, z);
-          nbColTemp++;
-        });
-        if (nbColTemp > this._nbCol) this._nbCol = nbColTemp;
+  _drawDecors(drawing) {
+    this._collisionMap = [];
+    for (const [key, value] of Object.entries(drawing)) {
+      const [x, y, z] = key.split("_").map((e) => {
+        return parseInt(e);
       });
-      this._nbRow++;
-    });
-    this._nbCol -= 1;
-    this._nbRow -= 1;
-    levels[this._level].elements_back.forEach((row, y) => {
-      row.forEach((step, z) => {
-        step.forEach((col, x) => {
-          if ("" != col)
-            this._background.drawImage(this._loader.fetchImg(col), x, y, z + 1);
-        });
+      if (x > this._nbCol) this._nbCol = x;
+      if (y > this._nbRow) this._nbRow = y;
+      // ground
+      if (value.ground)
+        this._background.drawImage(
+          this._loader.fetchImg(value.ground),
+          x,
+          y,
+          z
+        );
+      // backgrounds
+      value.backgrounds.forEach((item) => {
+        this._background.drawImage(this._loader.fetchImg(item), x, y, z + 1);
       });
-    });
-  }
-  _drawForeground() {
-    levels[this._level].elements_front.forEach((row, y) => {
-      row.forEach((step, z) => {
-        step.forEach((col, x) => {
-          if ("" != col)
-            this._foreground.drawImage(this._loader.fetchImg(col), x, y, z + 1);
-        });
+      // foregrounds
+      value.foregrounds.forEach((item) => {
+        this._foreground.drawImage(this._loader.fetchImg(item), x, y, z + 1);
       });
-    });
+      // collision ?
+      if (value.collision) this._collisionMap.push(key);
+    }
   }
   _drawPlayer(posX, posY) {
+    this._avatarPosX = posX;
+    this._avatarPosY = posY;
     this._player.clean();
     this._player.drawImage(
       this._loader.fetchImg(this._player.getImage()),
@@ -67,36 +65,46 @@ export default class GameEngine {
   }
   _drawLevel(level) {
     this._level = level;
-    this._loader.prepare().then(() => {
-      this._drawBackground();
-      this._drawForeground();
-      this._drawPlayer(config.player.initialX, config.player.initialY);
-      this._avatarPosX = config.player.initialX;
-      this._avatarPosY = config.player.initialY;
-    });
+    fetch(`/json/levels/${level}.json`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((drawing) => {
+        this._loader.prepare().then(() => {
+          this._drawDecors(drawing.drawings);
+          this._drawPlayer(config.player.initialX, config.player.initialY);
+        });
+      });
   }
   moveAvatar(direction) {
     this._player.setOrientation(direction);
+    let newX = this._avatarPosX,
+      newY = this._avatarPosY,
+      newZ = 0;
     switch (direction) {
       case "SE":
-        this._avatarPosX += 1;
+        newX++;
         break;
       case "SW":
-        this._avatarPosY += 1;
+        newY++;
         break;
       case "NE":
-        this._avatarPosY -= 1;
+        newY--;
         break;
       case "NW":
-        this._avatarPosX -= 1;
+        newX--;
         break;
       default:
         break;
     }
-    if (this._avatarPosX <= 0) this._avatarPosX = 0;
-    if (this._avatarPosY <= 0) this._avatarPosY = 0;
-    if (this._avatarPosX >= this._nbCol) this._avatarPosX = this._nbCol;
-    if (this._avatarPosY >= this._nbRow) this._avatarPosY = this._nbRow;
-    this._drawPlayer(this._avatarPosX, this._avatarPosY);
+    if (newX <= 0) newX = 0;
+    if (newY <= 0) newY = 0;
+    if (newX >= this._nbCol) newX = this._nbCol;
+    if (newY >= this._nbRow) newY = this._nbRow;
+    if (this._collisionMap.indexOf(`${newX}_${newY}_${newZ}`) != -1) {
+      newX = this._avatarPosX;
+      newY = this._avatarPosY;
+    }
+    this._drawPlayer(newX, newY);
   }
 }

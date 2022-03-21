@@ -1,6 +1,6 @@
 import CanvasDrawer from "./CanvasDrawer";
 
-export default class Background extends CanvasDrawer {
+export default class Decor extends CanvasDrawer {
   constructor(elementId) {
     super(elementId);
   }
