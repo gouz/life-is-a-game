@@ -9,11 +9,8 @@
     "height": 720
   },
   "player": {
-    "src": "astronautA",
     "shiftX": 0,
-    "shiftY": -2,
-    "initialX": 0,
-    "initialY": 0
+    "shiftY": -2
   },
   "dimensions": {
     "items": {

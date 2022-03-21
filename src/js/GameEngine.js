@@ -1,6 +1,4 @@
 import config from "../json/config.json";
-import items from "../json/items.json";
-// import levels from "../json/levels.json";
 import Loader from "./Loader";
 import Decor from "./Decor";
 import Player from "./Player";
@@ -8,22 +6,28 @@ import "./Keyboard.js";
 import GamePad from "./Gamepad";
 
 export default class GameEngine {
-  constructor(startLevel) {
-    this._loader = new Loader(items.list, config.ratio);
-    this._background = new Decor(config.HTMLElements.background);
-    this._foreground = new Decor(config.HTMLElements.foreground);
-    this._player = new Player(
-      config.HTMLElements.player,
-      config.player.src,
-      "SE"
-    );
-    this._drawLevel(startLevel);
-    this._avatarPosX = 0;
-    this._avatarPosY = 0;
-    this._nbRow = 0;
-    this._nbCol = 0;
-    this._gamepad = new GamePad();
-    this._collisionMap = [];
+  constructor(configuration) {
+    fetch(`/json/items.json`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((items) => {
+        this._loader = new Loader(items.list, config.ratio);
+        this._background = new Decor(config.HTMLElements.background);
+        this._foreground = new Decor(config.HTMLElements.foreground);
+        this._player = new Player(
+          config.HTMLElements.player,
+          configuration.avatar.img,
+          "SE"
+        );
+        this._drawLevel(configuration.start.level);
+        this._avatarPosX = configuration.start.avatar.x;
+        this._avatarPosY = configuration.start.avatar.y;
+        this._nbRow = 0;
+        this._nbCol = 0;
+        this._gamepad = new GamePad();
+        this._collisionMap = [];
+      });
   }
   _drawDecors(drawing) {
     this._collisionMap = [];
@@ -72,7 +76,7 @@ export default class GameEngine {
       .then((drawing) => {
         this._loader.prepare().then(() => {
           this._drawDecors(drawing.drawings);
-          this._drawPlayer(config.player.initialX, config.player.initialY);
+          this._drawPlayer(this._avatarPosX, this._avatarPosY);
         });
       });
   }

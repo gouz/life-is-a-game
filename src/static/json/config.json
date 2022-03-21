@@ -1,0 +1,13 @@
+{
+  "avatar": {
+    "img": "astronautA"
+  },
+  "start": {
+    "level": "nyons",
+    "avatar": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  }
+}
