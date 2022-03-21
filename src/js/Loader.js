@@ -7,8 +7,9 @@ export default class Loader {
 
   _loadImg(src) {
     return new Promise((resolve) => {
+      if (Object.keys(this._aCanvas).indexOf(src) != -1) resolve();
       const img = new Image();
-      img.onload = (e) => {
+      img.onload = () => {
         const oc = document.createElement("canvas");
         const octx = oc.getContext("2d");
         oc.width = img.width * this._ratio;
@@ -17,7 +18,7 @@ export default class Loader {
         this._aCanvas[src] = oc;
         resolve();
       };
-      img.src = `./img/${src}.png`;
+      img.src = `/img/${src}.png`;
     });
   }
 

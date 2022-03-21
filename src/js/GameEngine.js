@@ -13,30 +13,39 @@ export default class GameEngine {
       })
       .then((items) => {
         this._loader = new Loader(items.list, config.ratio);
-        this._background = new Decor(config.HTMLElements.background);
-        this._foreground = new Decor(config.HTMLElements.foreground);
-        this._player = new Player(
-          config.HTMLElements.player,
-          configuration.avatar.img,
-          "SE"
-        );
-        this._drawLevel(configuration.start.level);
-        this._avatarPosX = configuration.start.avatar.x;
-        this._avatarPosY = configuration.start.avatar.y;
-        this._nbRow = 0;
-        this._nbCol = 0;
-        this._gamepad = new GamePad();
-        this._collisionMap = [];
+        fetch(`/json/levels.json`)
+          .then((response) => {
+            return response.json();
+          })
+          .then((levels) => {
+            this._levels = levels;
+            this._background = new Decor(config.HTMLElements.background);
+            this._foreground = new Decor(config.HTMLElements.foreground);
+            this._player = new Player(
+              config.HTMLElements.player,
+              configuration.avatar.img,
+              "SE"
+            );
+            this._drawLevel(configuration.start.level);
+            this._avatarPosX = configuration.start.avatar.x;
+            this._avatarPosY = configuration.start.avatar.y;
+            this._maxRow = 0;
+            this._maxCol = 0;
+            this._gamepad = new GamePad();
+            this._collisionMap = [];
+          });
       });
   }
   _drawDecors(drawing) {
     this._collisionMap = [];
+    this._background.clean();
+    this._foreground.clean();
     for (const [key, value] of Object.entries(drawing)) {
       const [x, y, z] = key.split("_").map((e) => {
         return parseInt(e);
       });
-      if (x > this._nbCol) this._nbCol = x;
-      if (y > this._nbRow) this._nbRow = y;
+      if (x > this._maxCol) this._maxCol = x;
+      if (y > this._maxRow) this._maxRow = y;
       // ground
       if (value.ground)
         this._background.drawImage(
@@ -101,10 +110,42 @@ export default class GameEngine {
       default:
         break;
     }
-    if (newX <= 0) newX = 0;
-    if (newY <= 0) newY = 0;
-    if (newX >= this._nbCol) newX = this._nbCol;
-    if (newY >= this._nbRow) newY = this._nbRow;
+    if (newX < 0) {
+      if (this._levels[this._level].west) {
+        this._avatarPosX = this._maxCol;
+        this._drawLevel(this._levels[this._level].west);
+        return;
+      } else {
+        newX = 0;
+      }
+    }
+    if (newX > this._maxCol) {
+      if (this._levels[this._level].east) {
+        this._avatarPosX = 0;
+        this._drawLevel(this._levels[this._level].east);
+        return;
+      } else {
+        newX = this._maxCol;
+      }
+    }
+    if (newY < 0) {
+      if (this._levels[this._level].north) {
+        this._avatarPosY = this._maxRow;
+        this._drawLevel(this._levels[this._level].north);
+        return;
+      } else {
+        newY = 0;
+      }
+    }
+    if (newY > this._maxRow) {
+      if (this._levels[this._level].south) {
+        this._avatarPosY = 0;
+        this._drawLevel(this._levels[this._level].south);
+        return;
+      } else {
+        newY = this._maxRow;
+      }
+    }
     if (this._collisionMap.indexOf(`${newX}_${newY}_${newZ}`) != -1) {
       newX = this._avatarPosX;
       newY = this._avatarPosY;

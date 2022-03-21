@@ -1,50 +1,34 @@
 {
   "nyons": {
-    "next": {
-      "west": "montelimar"
-    }
+    "west": "montelimar"
   },
   "montelimar": {
-    "next": {
-      "east": "nyons",
-      "north": "valence"
-    }
+    "east": "nyons",
+    "north": "valence"
   },
   "valence": {
-    "next": {
-      "east": "isere",
-      "south": "montelimar",
-      "north": "lyon"
-    }
+    "east": "isere",
+    "south": "montelimar",
+    "north": "lyon"
   },
   "isere": {
-    "next": {
-      "west": "valence",
-      "north": "annecy"
-    }
+    "west": "valence",
+    "north": "annecy"
   },
   "annecy": {
-    "next": {
-      "west": "lyon",
-      "south": "isere"
-    }
+    "west": "lyon",
+    "south": "isere"
   },
   "lyon": {
-    "next": {
-      "west": "saint-etienne",
-      "east": "annecy",
-      "south": "valence"
-    }
+    "west": "saint-etienne",
+    "east": "annecy",
+    "south": "valence"
   },
   "saint-etienne": {
-    "next": {
-      "west": "lyon",
-      "north": "feurs"
-    }
+    "west": "lyon",
+    "north": "feurs"
   },
   "feurs": {
-    "next": {
-      "south": "annecy"
-    }
+    "south": "annecy"
   }
 }
