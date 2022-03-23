@@ -16,19 +16,22 @@ export default class CanvasDrawer {
     this._customShiftY = 0;
   }
 
-  drawImage(image, posX, posY, posZ = 0) {
+  drawImage(image, posX, posY, posZ = 0, shiftX = 0, shiftY = 0) {
+    shiftX *= this._newX;
+    shiftY *= this._newX;
     this._ctx.drawImage(
       image,
       (posX - posY) * this._newX -
         config.dimensions.items.shiftX * config.ratio +
         this._width / 2 -
-        this._newX +
-        this._customShiftX * this._newX * config.ratio,
+        this._customShiftX * this._newX * config.ratio +
+        shiftX,
       (posX + posY) * this._shift -
         config.dimensions.items.shiftY * config.ratio +
         this._shift +
         this._customShiftY * this._newX * config.ratio -
-        posZ * config.dimensions.items.shiftZ * config.ratio
+        posZ * config.dimensions.items.shiftZ * config.ratio +
+        shiftY
     );
   }
 

@@ -25,10 +25,10 @@
     "south": "valence"
   },
   "saint-etienne": {
-    "west": "lyon",
+    "east": "lyon",
     "north": "feurs"
   },
   "feurs": {
-    "south": "annecy"
+    "south": "saint-etienne"
   }
 }

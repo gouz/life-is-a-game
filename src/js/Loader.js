@@ -1,18 +1,17 @@
 export default class Loader {
-  constructor(ratio) {
+  constructor() {
     this._aCanvas = {};
-    this._ratio = ratio;
   }
 
-  _loadImg(src) {
+  _loadImg(src, ratio) {
     return new Promise((resolve) => {
       if (Object.keys(this._aCanvas).indexOf(src) != -1) resolve();
       const img = new Image();
       img.onload = () => {
         const oc = document.createElement("canvas");
         const octx = oc.getContext("2d");
-        oc.width = img.width * this._ratio;
-        oc.height = img.height * this._ratio;
+        oc.width = img.width * ratio;
+        oc.height = img.height * ratio;
         octx.drawImage(img, 0, 0, oc.width, oc.height);
         this._aCanvas[src] = oc;
         resolve();
@@ -23,8 +22,8 @@ export default class Loader {
 
   prepare(aItems) {
     let promises = [];
-    aItems.forEach((imageSrc) => {
-      promises.push(this._loadImg(imageSrc));
+    aItems.forEach((imageSrcRatio) => {
+      promises.push(this._loadImg(imageSrcRatio.src, imageSrcRatio.ratio));
     });
     return Promise.all(promises);
   }

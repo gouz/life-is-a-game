@@ -11,7 +11,7 @@ export default class GameEngine {
     canvasWrapper.style.width = config.board.width + "px";
     canvasWrapper.style.height = config.board.height + "px";
     this._titleElement = document.getElementById(config.HTMLElements.title);
-    this._loader = new Loader(config.ratio);
+    this._loader = new Loader();
     fetch(`/json/levels.json`)
       .then((response) => {
         return response.json();
@@ -27,7 +27,10 @@ export default class GameEngine {
         );
         let avatars = ["NW", "NE", "SW", "SE"];
         avatars = avatars.map((a) => {
-          return `${configuration.avatar.img}_${a}`;
+          return {
+            src: `${configuration.avatar.img}_${a}`,
+            ratio: config.ratio,
+          };
         });
         this._loader.prepare(avatars).then(() => {
           this._drawLevel(configuration.start.level);
@@ -62,7 +65,9 @@ export default class GameEngine {
           this._loader.fetchImg(key),
           coord[0],
           coord[1],
-          coord[2] + 1
+          coord[2] + 1,
+          value.shiftX,
+          value.shiftY
         );
       });
       // foregrounds
@@ -71,7 +76,9 @@ export default class GameEngine {
           this._loader.fetchImg(key),
           coord[0],
           coord[1],
-          coord[2] + 1
+          coord[2] + 1,
+          value.shiftX,
+          value.shiftY
         );
       });
       collisions?.forEach((coord) => {
@@ -97,7 +104,13 @@ export default class GameEngine {
         return response.json();
       })
       .then((drawing) => {
-        this._loader.prepare(Object.keys(drawing.drawings)).then(() => {
+        let objectsToLoad = [];
+        for (const [key, value] of Object.entries(drawing.drawings))
+          objectsToLoad.push({
+            src: key,
+            ratio: (value.ratio ? value.ratio : 1) * config.ratio,
+          });
+        this._loader.prepare(objectsToLoad).then(() => {
           this._drawDecors(drawing.drawings, drawing.collisions);
           this._drawPlayer(this._avatarPosX, this._avatarPosY);
         });
