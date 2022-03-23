@@ -2,7 +2,9 @@
   "HTMLElements": {
     "background": "board-background",
     "player": "board-player",
-    "foreground": "board-foreground"
+    "foreground": "board-foreground",
+    "wrapper": "canvas-wrapper",
+    "title": "title"
   },
   "board": {
     "width": 1280,

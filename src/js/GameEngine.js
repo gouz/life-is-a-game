@@ -7,63 +7,76 @@ import GamePad from "./Gamepad";
 
 export default class GameEngine {
   constructor(configuration) {
-    fetch(`/json/items.json`)
+    const canvasWrapper = document.getElementById("canvas-wrapper");
+    canvasWrapper.style.width = config.board.width + "px";
+    canvasWrapper.style.height = config.board.height + "px";
+    this._titleElement = document.getElementById(config.HTMLElements.title);
+    this._loader = new Loader(config.ratio);
+    fetch(`/json/levels.json`)
       .then((response) => {
         return response.json();
       })
-      .then((items) => {
-        this._loader = new Loader(items.list, config.ratio);
-        fetch(`/json/levels.json`)
-          .then((response) => {
-            return response.json();
-          })
-          .then((levels) => {
-            this._levels = levels;
-            this._background = new Decor(config.HTMLElements.background);
-            this._foreground = new Decor(config.HTMLElements.foreground);
-            this._player = new Player(
-              config.HTMLElements.player,
-              configuration.avatar.img,
-              "SE"
-            );
-            this._drawLevel(configuration.start.level);
-            this._avatarPosX = configuration.start.avatar.x;
-            this._avatarPosY = configuration.start.avatar.y;
-            this._maxRow = 0;
-            this._maxCol = 0;
-            this._gamepad = new GamePad();
-            this._collisionMap = [];
-          });
+      .then((levels) => {
+        this._levels = levels;
+        this._background = new Decor(config.HTMLElements.background);
+        this._foreground = new Decor(config.HTMLElements.foreground);
+        this._player = new Player(
+          config.HTMLElements.player,
+          configuration.avatar.img,
+          "SE"
+        );
+        let avatars = ["NW", "NE", "SW", "SE"];
+        avatars = avatars.map((a) => {
+          return `${configuration.avatar.img}_${a}`;
+        });
+        this._loader.prepare(avatars).then(() => {
+          this._drawLevel(configuration.start.level);
+          this._avatarPosX = configuration.start.avatar.x;
+          this._avatarPosY = configuration.start.avatar.y;
+          this._gamepad = new GamePad();
+          this._collisionMap = [];
+        });
       });
   }
-  _drawDecors(drawing) {
+  _drawDecors(drawing, collisions) {
     this._collisionMap = [];
     this._background.clean();
     this._foreground.clean();
+    this._maxRow = 0;
+    this._maxCol = 0;
     for (const [key, value] of Object.entries(drawing)) {
-      const [x, y, z] = key.split("_").map((e) => {
-        return parseInt(e);
-      });
-      if (x > this._maxCol) this._maxCol = x;
-      if (y > this._maxRow) this._maxRow = y;
       // ground
-      if (value.ground)
+      value.ground?.forEach((coord) => {
+        if (coord[0] > this._maxCol) this._maxCol = coord[0];
+        if (coord[1] > this._maxRow) this._maxRow = coord[1];
         this._background.drawImage(
-          this._loader.fetchImg(value.ground),
-          x,
-          y,
-          z
+          this._loader.fetchImg(key),
+          coord[0],
+          coord[1],
+          coord[2]
         );
+      });
       // backgrounds
-      value.backgrounds.forEach((item) => {
-        this._background.drawImage(this._loader.fetchImg(item), x, y, z + 1);
+      value.background?.forEach((coord) => {
+        this._background.drawImage(
+          this._loader.fetchImg(key),
+          coord[0],
+          coord[1],
+          coord[2] + 1
+        );
       });
       // foregrounds
-      value.foregrounds.forEach((item) => {
-        this._foreground.drawImage(this._loader.fetchImg(item), x, y, z + 1);
+      value.foreground?.forEach((coord) => {
+        this._foreground.drawImage(
+          this._loader.fetchImg(key),
+          coord[0],
+          coord[1],
+          coord[2] + 1
+        );
       });
-      // collision ?
-      if (value.collision) this._collisionMap.push(key);
+      collisions?.forEach((coord) => {
+        this._collisionMap.push(coord.join("_"));
+      });
     }
   }
   _drawPlayer(posX, posY) {
@@ -78,13 +91,14 @@ export default class GameEngine {
   }
   _drawLevel(level) {
     this._level = level;
+    this._titleElement.innerText = this._level;
     fetch(`/json/levels/${level}.json`)
       .then((response) => {
         return response.json();
       })
       .then((drawing) => {
-        this._loader.prepare().then(() => {
-          this._drawDecors(drawing.drawings);
+        this._loader.prepare(Object.keys(drawing.drawings)).then(() => {
+          this._drawDecors(drawing.drawings, drawing.collisions);
           this._drawPlayer(this._avatarPosX, this._avatarPosY);
         });
       });

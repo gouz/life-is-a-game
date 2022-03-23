@@ -1,6 +1,5 @@
 export default class Loader {
-  constructor(aItems, ratio) {
-    this._aItems = aItems;
+  constructor(ratio) {
     this._aCanvas = {};
     this._ratio = ratio;
   }
@@ -22,9 +21,9 @@ export default class Loader {
     });
   }
 
-  prepare() {
+  prepare(aItems) {
     let promises = [];
-    this._aItems.forEach((imageSrc) => {
+    aItems.forEach((imageSrc) => {
       promises.push(this._loadImg(imageSrc));
     });
     return Promise.all(promises);
