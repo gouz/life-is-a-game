@@ -9,30 +9,28 @@ export default class CanvasDrawer {
     $bb.height = this._height;
     this._ctx = $bb.getContext("2d");
 
-    this._newX = config.dimensions.items.width * config.ratio;
+    this._side = config.dimensions.items.width * config.ratio;
     this._shift = (config.dimensions.items.width / 2) * config.ratio;
 
     this._customShiftX = 0;
     this._customShiftY = 0;
   }
 
-  drawImage(image, posX, posY, posZ = 0, shiftX = 0, shiftY = 0) {
-    shiftX *= this._newX;
-    shiftY *= this._newX;
-    this._ctx.drawImage(
-      image,
-      (posX - posY) * this._newX -
-        config.dimensions.items.shiftX * config.ratio +
-        this._width / 2 -
-        this._customShiftX * this._newX * config.ratio +
-        shiftX,
+  drawImage(image, posX, posY, posZ = 0, ratio = 1, shiftX = 0, shiftY = 0) {
+    console.log(this._size);
+    const x =
+      (posX - posY) * this._side -
+      config.dimensions.items.shiftX * config.ratio +
+      this._width / 2 -
+      this._customShiftX * this._side * config.ratio;
+    const y =
       (posX + posY) * this._shift -
-        config.dimensions.items.shiftY * config.ratio +
-        this._shift +
-        this._customShiftY * this._newX * config.ratio -
-        posZ * config.dimensions.items.shiftZ * config.ratio +
-        shiftY
-    );
+      config.dimensions.items.shiftY * config.ratio +
+      this._shift +
+      this._customShiftY * this._side * config.ratio -
+      posZ * config.dimensions.items.shiftZ * config.ratio -
+      ((ratio - 1) * this._side) / 2;
+    this._ctx.drawImage(image, x, y);
   }
 
   clean() {

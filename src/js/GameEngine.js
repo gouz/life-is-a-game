@@ -50,14 +50,58 @@ export default class GameEngine {
     for (const [key, value] of Object.entries(drawing)) {
       // ground
       value.ground?.forEach((coord) => {
-        if (coord[0] > this._maxCol) this._maxCol = coord[0];
-        if (coord[1] > this._maxRow) this._maxRow = coord[1];
-        this._background.drawImage(
-          this._loader.fetchImg(key),
-          coord[0],
-          coord[1],
-          coord[2]
-        );
+        if (
+          ("" + coord[0]).indexOf("..") != -1 ||
+          ("" + coord[1]).indexOf("..") != -1
+        ) {
+          // math notation
+          let boundingbox = {
+            x: { min: 0, max: 0 },
+            y: { min: 0, max: 0 },
+          };
+          if (("" + coord[0]).indexOf("..") != -1) {
+            [boundingbox.x.min, boundingbox.x.max] = coord[0].split("..");
+          } else {
+            boundingbox.x.min = coord[0];
+            boundingbox.x.max = coord[0];
+          }
+          if (("" + coord[1]).indexOf("..") != -1) {
+            [boundingbox.y.min, boundingbox.y.max] = coord[1].split("..");
+          } else {
+            boundingbox.y.min = coord[1];
+            boundingbox.y.max = coord[1];
+          }
+          boundingbox.x.min = parseInt(boundingbox.x.min);
+          boundingbox.x.max = parseInt(boundingbox.x.max);
+          boundingbox.y.min = parseInt(boundingbox.y.min);
+          boundingbox.y.max = parseInt(boundingbox.y.max);
+          for (let x = boundingbox.x.min; x <= boundingbox.x.max; x++) {
+            for (let y = boundingbox.y.min; y <= boundingbox.y.max; y++) {
+              this._background.drawImage(
+                this._loader.fetchImg(key),
+                parseInt(x),
+                parseInt(y),
+                coord[2]
+              );
+            }
+          }
+          if (boundingbox.x.max > this._maxCol)
+            this._maxCol = boundingbox.x.max;
+          if (boundingbox.y.max > this._maxRow)
+            this._maxRow = boundingbox.y.max;
+        } else {
+          coord = coord.map((v) => {
+            return parseInt(v);
+          });
+          if (coord[0] > this._maxCol) this._maxCol = coord[0];
+          if (coord[1] > this._maxRow) this._maxRow = coord[1];
+          this._background.drawImage(
+            this._loader.fetchImg(key),
+            coord[0],
+            coord[1],
+            coord[2]
+          );
+        }
       });
       // backgrounds
       value.background?.forEach((coord) => {
@@ -66,6 +110,7 @@ export default class GameEngine {
           coord[0],
           coord[1],
           coord[2] + 1,
+          value.ratio,
           value.shiftX,
           value.shiftY
         );
@@ -77,6 +122,7 @@ export default class GameEngine {
           coord[0],
           coord[1],
           coord[2] + 1,
+          value.ratio,
           value.shiftX,
           value.shiftY
         );
