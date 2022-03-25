@@ -1,0 +1,5 @@
+tasks:
+  - name: setup and run for dev in gitpod workspace
+    command: npm install && npm run gitpod
+
+
