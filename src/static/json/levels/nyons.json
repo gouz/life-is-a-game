@@ -4,8 +4,9 @@
       "ground": [["0..15", "0..15", 0]]
     },
     "tree_oak_NE": {
-      "foreground": [[8, 2, 0]],
-      "ratio": 2
+      "background": [[8, 3, 0]],
+      "ratio": 2,
+      "z-index": 1
     },
     "grass_leafsLarge_SE": {
       "background": [[4, 4, 0]],
@@ -14,7 +15,8 @@
     "house_type04_NE": {
       "background": [[9, 4, 0]],
       "ratio": 3.5,
-      "shiftY": -2
+      "shiftY": -2,
+      "z-index": 2
     },
     "ground_riverBend_SW": { "background": [[15, 15, 0]] },
     "ground_riverRocks_NE": {

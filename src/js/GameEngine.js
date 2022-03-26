@@ -131,70 +131,80 @@ export default class GameEngine {
   _drawDecors(drawing, collisions) {
     this._maxRow = 0;
     this._maxCol = 0;
-    for (const [image, value] of Object.entries(drawing)) {
-      // ground
-      value.ground?.forEach((coord) => {
-        this._loopDraw(this._background, coord, image, true);
-      });
-      // backgrounds
-      value.background?.forEach((coord) => {
-        this._loopDraw(
-          this._background,
-          coord,
-          image,
-          false,
-          value.ratio,
-          value.shiftX,
-          value.shiftY,
-          1
-        );
-      });
-      // foregrounds
-      value.foreground?.forEach((coord) => {
-        this._loopDraw(
-          this._foreground,
-          coord,
-          image,
-          false,
-          value.ratio,
-          value.shiftX,
-          value.shiftY,
-          1
-        );
-      });
-      collisions?.forEach((coord) => {
-        if (("" + coord[0]).includes("..") || ("" + coord[1]).includes("..")) {
-          // math notation
-          let boundingbox = {
-            x: { min: 0, max: 0 },
-            y: { min: 0, max: 0 },
-          };
-          if (("" + coord[0]).includes("..")) {
-            [boundingbox.x.min, boundingbox.x.max] = coord[0].split("..");
-          } else {
-            boundingbox.x.min = coord[0];
-            boundingbox.x.max = coord[0];
-          }
-          if (("" + coord[1]).includes("..")) {
-            [boundingbox.y.min, boundingbox.y.max] = coord[1].split("..");
-          } else {
-            boundingbox.y.min = coord[1];
-            boundingbox.y.max = coord[1];
-          }
-          boundingbox.x.min = parseInt(boundingbox.x.min);
-          boundingbox.x.max = parseInt(boundingbox.x.max);
-          boundingbox.y.min = parseInt(boundingbox.y.min);
-          boundingbox.y.max = parseInt(boundingbox.y.max);
-          for (let x = boundingbox.x.min; x <= boundingbox.x.max; x++) {
-            for (let y = boundingbox.y.min; y <= boundingbox.y.max; y++) {
-              this._collisionMap.push([x, y, parseInt(coord[2])].join("_"));
-            }
-          }
-        } else {
-          this._collisionMap.push(coord.join("_"));
-        }
-      });
+    for (let i = 0; i <= this._maxZIndex; i++) {
+      for (const [image, value] of Object.entries(drawing)) {
+        // ground
+        value.ground?.forEach((coord) => {
+          if (0 == i) this._loopDraw(this._background, coord, image, true);
+        });
+        // backgrounds
+        value.background?.forEach((coord) => {
+          if (
+            (0 == i && typeof value["z-index"] == "undefined") ||
+            i == value["z-index"]
+          )
+            this._loopDraw(
+              this._background,
+              coord,
+              image,
+              false,
+              value.ratio,
+              value.shiftX,
+              value.shiftY,
+              1
+            );
+        });
+        // foregrounds
+        value.foreground?.forEach((coord) => {
+          if (
+            (0 == i && typeof value["z-index"] == "undefined") ||
+            i == value["z-index"]
+          )
+            this._loopDraw(
+              this._foreground,
+              coord,
+              image,
+              false,
+              value.ratio,
+              value.shiftX,
+              value.shiftY,
+              1
+            );
+        });
+      }
     }
+    collisions?.forEach((coord) => {
+      if (("" + coord[0]).includes("..") || ("" + coord[1]).includes("..")) {
+        // math notation
+        let boundingbox = {
+          x: { min: 0, max: 0 },
+          y: { min: 0, max: 0 },
+        };
+        if (("" + coord[0]).includes("..")) {
+          [boundingbox.x.min, boundingbox.x.max] = coord[0].split("..");
+        } else {
+          boundingbox.x.min = coord[0];
+          boundingbox.x.max = coord[0];
+        }
+        if (("" + coord[1]).includes("..")) {
+          [boundingbox.y.min, boundingbox.y.max] = coord[1].split("..");
+        } else {
+          boundingbox.y.min = coord[1];
+          boundingbox.y.max = coord[1];
+        }
+        boundingbox.x.min = parseInt(boundingbox.x.min);
+        boundingbox.x.max = parseInt(boundingbox.x.max);
+        boundingbox.y.min = parseInt(boundingbox.y.min);
+        boundingbox.y.max = parseInt(boundingbox.y.max);
+        for (let x = boundingbox.x.min; x <= boundingbox.x.max; x++) {
+          for (let y = boundingbox.y.min; y <= boundingbox.y.max; y++) {
+            this._collisionMap.push([x, y, parseInt(coord[2])].join("_"));
+          }
+        }
+      } else {
+        this._collisionMap.push(coord.join("_"));
+      }
+    });
   }
   _drawPlayer(posX, posY) {
     this._avatarPosX = posX;
@@ -215,11 +225,16 @@ export default class GameEngine {
       })
       .then((drawing) => {
         let objectsToLoad = [];
-        for (const [key, value] of Object.entries(drawing.drawings))
+        this._maxZIndex = 0;
+        for (const [key, value] of Object.entries(drawing.drawings)) {
           objectsToLoad.push({
             src: key,
             ratio: (value.ratio ? value.ratio : 1) * config.ratio,
           });
+          if (value["z-index"] && value["z-index"] > this._maxZIndex) {
+            this._maxZIndex = parseInt(value["z-index"]);
+          }
+        }
         this._loader.prepare(objectsToLoad).then(() => {
           this._background.clean();
           this._foreground.clean();
