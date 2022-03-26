@@ -12,15 +12,14 @@
   },
   "player": {
     "shiftX": 0,
-    "shiftY": -2
+    "shiftY": -1
   },
   "dimensions": {
     "items": {
       "width": 64,
       "shiftX": 256,
-      "shiftY": 200,
-      "shiftZ": 80
+      "shiftY": 200
     }
   },
-  "ratio": 1
+  "ratio": 0.6
 }
