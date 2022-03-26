@@ -3,12 +3,11 @@
     "cliff_block_rock_SE": {
       "ground": [["0..4", "0..4", 0]]
     },
-    "cliff_block_stone_SE": {
-      "ground": [["4", "4", 1]]
-    },
     "tree_oak_NE": {
-      "foreground": [[1, 1, 0]],
-      "ratio": 1
+      "foreground": [[4, 1, 0]],
+      "ratio": 2,
+      "shiftX": 0,
+      "shiftY": -2
     }
   }
 }
