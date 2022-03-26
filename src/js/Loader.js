@@ -3,9 +3,14 @@ export default class Loader {
     this._aCanvas = {};
   }
 
-  _loadImg(src, ratio) {
+  _normalizeName(src, ratio) {
+    return `${src}::${ratio}`;
+  }
+
+  _loadImg(src, ratio = 1) {
     return new Promise((resolve) => {
-      if (Object.keys(this._aCanvas).indexOf(src) != -1) resolve();
+      const name = this._normalizeName(src, ratio);
+      if (Object.keys(this._aCanvas).includes(name)) resolve();
       const img = new Image();
       img.onload = () => {
         const oc = document.createElement("canvas");
@@ -13,7 +18,7 @@ export default class Loader {
         oc.width = img.width * ratio;
         oc.height = img.height * ratio;
         octx.drawImage(img, 0, 0, oc.width, oc.height);
-        this._aCanvas[src] = oc;
+        this._aCanvas[name] = oc;
         resolve();
       };
       img.src = `/img/${src}.png`;
@@ -28,7 +33,7 @@ export default class Loader {
     return Promise.all(promises);
   }
 
-  fetchImg(src) {
-    return this._aCanvas[src];
+  fetchImg(src, ratio = 1) {
+    return this._aCanvas[this._normalizeName(src, ratio)];
   }
 }

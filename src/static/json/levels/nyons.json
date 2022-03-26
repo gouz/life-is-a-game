@@ -1,13 +1,41 @@
 {
   "drawings": {
     "cliff_block_rock_SE": {
-      "ground": [["0..4", "0..4", 0]]
+      "ground": [["0..15", "0..15", 0]]
     },
     "tree_oak_NE": {
-      "foreground": [[4, 1, 0]],
-      "ratio": 2,
-      "shiftX": 0,
+      "foreground": [[8, 2, 0]],
+      "ratio": 2
+    },
+    "grass_leafsLarge_SE": {
+      "background": [[4, 4, 0]],
+      "ratio": 2
+    },
+    "house_type04_NE": {
+      "background": [[9, 4, 0]],
+      "ratio": 3.5,
       "shiftY": -2
+    },
+    "ground_riverBend_SW": { "background": [[15, 15, 0]] },
+    "ground_riverRocks_NE": {
+      "background": [[15, "0..14|2", 0]]
+    },
+    "ground_riverRocks_SW": {
+      "background": [[15, "1..13|2", 0]]
+    },
+    "ground_riverStraight_NW": {
+      "background": [["0..14|2", 15, 0]]
+    },
+    "ground_riverStraight_SE": {
+      "background": [["1..13|2", 15, 0]]
+    },
+    "ground_pathStraight_NE": {
+      "background": [[9, "3..4", 0]]
     }
-  }
+  },
+  "collisions": [
+    [15, "0..14", "0"],
+    ["0..14", 15, "0"],
+    ["6..12", "0..2", 0]
+  ]
 }

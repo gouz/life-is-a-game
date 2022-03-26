@@ -32,6 +32,9 @@ export default class CanvasDrawer {
     y += this._side * shiftY;
     // we manage the Z position
     y -= posZ * this._side * 1.25;
+    if (ratio != 1) {
+      y -= this._side * ratio;
+    }
     // we shift the Y pos which allows to draw an avatar on the top left corner
     y += this._side / 2;
 
