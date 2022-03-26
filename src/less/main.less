@@ -14,47 +14,5 @@ main {
   @apply flex flex-col items-center justify-center;
 }
 
-#canvas-wrapper {
-  @apply flex items-center justify-center;
-  @apply p-20;
-  @apply rounded-lg;
-  @apply shadow-lg;
-  @apply relative;
-  @apply bg-slate-700;
-
-  canvas {
-    @apply absolute;
-
-    &#board-background {
-      @apply z-0;
-    }
-
-    &#board-player {
-      @apply z-10;
-    }
-
-    &#board-foreground {
-      @apply z-20;
-    }
-  }
-}
-
-#title {
-  @apply mb-6;
-  @apply px-4 py-1;
-  @apply rounded-lg;
-  @apply border-4 border-red-600;
-  @apply bg-slate-100;
-  @apply text-black;
-  @apply uppercase font-bold;
-  @apply relative;
-
-  &::after,
-  &::before {
-    @apply absolute;
-    @apply h-6 w-1;
-    @apply bg-slate-400;
-    @apply -bottom-6;
-    content: "";
-  }
-}
+@import "./_canvas.less";
+@import "./_title.less";

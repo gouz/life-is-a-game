@@ -1,0 +1,24 @@
+#canvas-wrapper {
+  @apply flex items-center justify-center;
+  @apply p-20;
+  @apply rounded-lg;
+  @apply shadow-lg;
+  @apply relative;
+  @apply bg-slate-700;
+
+  canvas {
+    @apply absolute;
+
+    &#board-background {
+      @apply z-0;
+    }
+
+    &#board-player {
+      @apply z-10;
+    }
+
+    &#board-foreground {
+      @apply z-20;
+    }
+  }
+}
