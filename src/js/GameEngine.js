@@ -38,6 +38,8 @@ export default class GameEngine {
           this._avatarPosY = configuration.start.avatar.y;
           this._gamepad = new GamePad();
           this._collisionMap = [];
+          this._treasureMap = [];
+          this._items = [];
         });
       });
   }
@@ -128,7 +130,7 @@ export default class GameEngine {
       );
     }
   }
-  _drawDecors(drawing, collisions) {
+  _drawDecors(drawing, collisions, treasures) {
     this._maxRow = 0;
     this._maxCol = 0;
     for (let i = 0; i <= this._maxZIndex; i++) {
@@ -205,6 +207,11 @@ export default class GameEngine {
         this._collisionMap.push(coord.join("_"));
       }
     });
+    treasures?.forEach((treasure) => {
+      const coord = treasure.coord.join("_");
+      this._treasureMap.push(coord);
+      this._items[coord] = treasure.item;
+    });
   }
   _drawPlayer(posX, posY) {
     this._avatarPosX = posX;
@@ -239,7 +246,13 @@ export default class GameEngine {
           this._background.clean();
           this._foreground.clean();
           this._collisionMap = [];
-          this._drawDecors(drawing.drawings, drawing.collisions);
+          this._treasureMap = [];
+          this._items = [];
+          this._drawDecors(
+            drawing.drawings,
+            drawing.collisions,
+            drawing.treasures
+          );
           this._drawPlayer(this._avatarPosX, this._avatarPosY);
         });
       });
@@ -306,5 +319,33 @@ export default class GameEngine {
       newY = this._avatarPosY;
     }
     this._drawPlayer(newX, newY);
+  }
+  canOpenTreasureOrDoor() {
+    let newX = this._avatarPosX;
+    let newY = this._avatarPosY;
+    switch (this._player.getOrientation()) {
+      case "NW":
+        newX--;
+        break;
+      case "NE":
+        newY--;
+        break;
+      case "SE":
+        newX++;
+        break;
+      case "SW":
+        newY++;
+        break;
+      default:
+        break;
+    }
+    const pos = [newX, newY, 0].join("_");
+    console.log(pos, this._treasureMap);
+    if (this._treasureMap.includes(pos)) {
+      // 🎉 where is a treasure !!!
+      alert(this._items[pos]);
+    } else {
+      alert("Nothing to do!");
+    }
   }
 }

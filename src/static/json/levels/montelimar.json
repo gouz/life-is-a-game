@@ -11,7 +11,20 @@
     },
     "rock_largeD_SW": {
       "background": [[12, 1, 0]]
+    },
+    "chest_SE": {
+      "background": [[8, 4, 0]],
+      "shiftY": 1
     }
   },
-  "collisions": [[12, 1, 0]]
+  "collisions": [
+    [12, 1, 0],
+    [8, 4, 0]
+  ],
+  "treasures": [
+    {
+      "coord": [8, 4, 0],
+      "item": "BAC"
+    }
+  ]
 }

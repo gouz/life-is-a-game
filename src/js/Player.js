@@ -17,4 +17,8 @@ export default class Player extends CanvasDrawer {
   setOrientation(orientation) {
     this._orientation = orientation;
   }
+
+  getOrientation() {
+    return this._orientation;
+  }
 }

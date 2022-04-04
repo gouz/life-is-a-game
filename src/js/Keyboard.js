@@ -14,6 +14,9 @@ document.querySelector("body").addEventListener(
       case "ArrowRight":
         window.gouz_ge.moveAvatar("SE");
         break;
+      case "Enter":
+        window.gouz_ge.canOpenTreasureOrDoor();
+        break;
       default:
         break;
     }
