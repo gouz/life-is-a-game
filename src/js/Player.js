@@ -6,6 +6,7 @@ export default class Player extends CanvasDrawer {
     super(elementId);
     this._src = imageSrc;
     this._orientation = orientation;
+    this._items = [];
 
     this._customShiftY = config.player.shiftY;
   }
@@ -20,5 +21,13 @@ export default class Player extends CanvasDrawer {
 
   getOrientation() {
     return this._orientation;
+  }
+
+  addItem(item) {
+    this._items.push(item);
+  }
+
+  owns(item) {
+    return this._items.includes(item);
   }
 }

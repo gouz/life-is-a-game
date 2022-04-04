@@ -340,10 +340,15 @@ export default class GameEngine {
         break;
     }
     const pos = [newX, newY, 0].join("_");
-    console.log(pos, this._treasureMap);
     if (this._treasureMap.includes(pos)) {
       // 🎉 where is a treasure !!!
-      alert(this._items[pos]);
+      const item = this._items[pos];
+      if (this._player.owns(item)) {
+        alert(`You already own this item : ${item}`);
+      } else {
+        this._player.addItem(item);
+        alert(`Congratulations you own now this : ${item}`);
+      }
     } else {
       alert("Nothing to do!");
     }
