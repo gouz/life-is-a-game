@@ -2,7 +2,7 @@ export default class GamePad {
   constructor() {
     window.addEventListener("gamepadconnected", () => {
       this.trigger();
-      this._interval = setInterval(this.trigger, 50);
+      this._interval = setInterval(this.trigger, 100);
     });
   }
 
@@ -25,7 +25,11 @@ export default class GamePad {
         }
       }
       for (const [index, button] of gamepad.buttons.entries()) {
-        //console.log(gamepad.index, index, button.value, button.pressed);
+        if (button.pressed) {
+          if (0 == button.value || 1 == button.value) {
+            window.gouz_ge.canOpenTreasureOrDoor();
+          }
+        }
       }
     }
   }
