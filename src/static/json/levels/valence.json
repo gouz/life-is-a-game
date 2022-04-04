@@ -3,15 +3,18 @@
     "cliff_block_stone_SE": {
       "ground": [["0..15", "0..15", 0]]
     },
-    "grass_leafsLarge_SE": {
-      "background": [[11, 1, 0]]
-    },
-    "tree_oak_NE": {
-      "foreground": [[11, 1, 0]]
-    },
-    "rock_largeD_SW": {
-      "background": [[12, 1, 0]]
+    "house_type20_NW": {
+      "background": [[5, 5, 0]],
+      "ratio": 3.5,
+      "shiftY": -2
     }
   },
-  "collisions": [[12, 1, 0]]
+  "collisions": [["3..4", "2..5", 0]],
+  "doors": [
+    {
+      "coord": [4, 5, 0],
+      "item": "DUT",
+      "requirements": ["BAC"]
+    }
+  ]
 }
