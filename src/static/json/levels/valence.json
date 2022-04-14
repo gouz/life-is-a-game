@@ -23,6 +23,7 @@
     {
       "coord": [4, 5, 0],
       "item": "DUT",
+      "label": "DUT Informatique option Systèmes Industriels",
       "requirements": ["BAC"]
     }
   ]

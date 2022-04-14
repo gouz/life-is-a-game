@@ -42,6 +42,7 @@ export default class GameEngine {
           this._doorMap = [];
           this._doorRequirements = {};
           this._items = {};
+          this._labels = {};
         });
       });
   }
@@ -213,12 +214,14 @@ export default class GameEngine {
       const coord = treasure.coord.join("_");
       this._treasureMap.push(coord);
       this._items[coord] = treasure.item;
+      this._labels[treasure.item] = treasure.label;
     });
     doors?.forEach((door) => {
       const coord = door.coord.join("_");
       this._doorMap.push(coord);
       this._doorRequirements[coord] = door.requirements;
       this._items[coord] = door.item;
+      this._labels[door.item] = door.label;
     });
   }
   _drawPlayer(posX, posY) {
@@ -255,7 +258,7 @@ export default class GameEngine {
           this._foreground.clean();
           this._collisionMap = [];
           this._treasureMap = [];
-          this._items = [];
+          this._items = {};
           this._drawDecors(
             drawing.drawings,
             drawing.collisions,
@@ -352,17 +355,19 @@ export default class GameEngine {
     if (this._treasureMap.includes(pos)) {
       // 🎉 there is a treasure !!!
       const item = this._items[pos];
+      const label = this._labels[item];
       if (this._player.owns(item)) {
         alert(`You already own this item : ${item}`);
       } else {
         this._player.addItem(item);
-        alert(`Congratulations you own now this : ${item}`);
+        alert(`Congratulations you own now this : ${label}`);
       }
     } else if (this._doorMap.includes(pos)) {
       // 🎉 there is a door !!!
       const item = this._items[pos];
+      const label = this._labels[item];
       if (this._player.owns(item)) {
-        alert(`You already own this item : ${item}`);
+        alert(`You already own this item : ${label}`);
       } else {
         // check requirement
         let allOwned = 0;
@@ -371,13 +376,13 @@ export default class GameEngine {
           if (this._player.owns(requirement)) {
             allOwned++;
           } else {
-            miss.push(requirement);
+            miss.push(this._labels[requirement]);
           }
         });
         if (allOwned == this._doorRequirements[pos].length) {
           // 🥳 all requirements are owned by the player
           this._player.addItem(item);
-          alert(`Congratulations you own now this : ${item}`);
+          alert(`Congratulations you own now this : ${label}`);
         } else {
           alert(`You miss : ${miss.join(", ")}`);
         }
