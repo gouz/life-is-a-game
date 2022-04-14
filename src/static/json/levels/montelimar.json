@@ -1,25 +1,45 @@
 {
   "drawings": {
-    "cliff_block_stone_SE": {
+    "cliff_block_rock_SE": {
       "ground": [["0..15", "0..15", 0]]
-    },
-    "grass_leafsLarge_SE": {
-      "background": [[11, 1, 0]]
-    },
-    "tree_oak_NE": {
-      "foreground": [[11, 1, 0]]
-    },
-    "rock_largeD_SW": {
-      "background": [[12, 1, 0]]
     },
     "chest_SE": {
       "background": [[8, 4, 0]],
       "shiftY": 1
+    },
+    "ground_riverStraight_NW": {
+      "background": [["2..14|2", 15, 0]]
+    },
+    "ground_riverStraight_SE": {
+      "background": [["3..15|2", 15, 0]]
+    },
+    "ground_riverSideOpen_SE": {
+      "background": [[1, 15, 0]]
+    },
+    "ground_riverOpen_SE": {
+      "background": [[0, "0..15", 0]]
+    },
+    "ground_riverSide_SE": {
+      "background": [[1, "0..14", 0]]
+    },
+    "house_type19_NE": {
+      "background": [[8, 6, 0]],
+      "ratio": 3.5,
+      "shiftY": -2,
+      "z-index": 2
+    },
+    "ground_pathStraight_SE": {
+      "background": [["12..15", 6, 0]]
+    },
+    "ground_pathEnd_NW": {
+      "background": [[11, 6, 0]]
     }
   },
   "collisions": [
     [12, 1, 0],
-    [8, 4, 0]
+    [8, 4, 0],
+    ["0..1", "0..15", 0],
+    ["0..15", 15, 0]
   ],
   "treasures": [
     {

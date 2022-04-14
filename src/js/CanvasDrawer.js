@@ -26,7 +26,7 @@ export default class CanvasDrawer {
     x += this._width / (2 * config.ratio);
     // we shift the element to match its correct place
     x += this._side * this._customShiftX;
-    y += this._side * this._customShiftY;
+    y += this._side * this._customShiftY + 30;
     // we shift the element to match its correct place through the configuration
     x += this._side * shiftX;
     y += this._side * shiftY;

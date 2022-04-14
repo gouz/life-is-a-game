@@ -1,7 +1,16 @@
 {
   "drawings": {
     "cliff_block_stone_SE": {
-      "ground": [["0..15", "0..15", 0]]
+      "ground": [["0..15", "0..7", 0]]
+    },
+    "cliff_block_rock_SE": {
+      "ground": [["0..15", "8..15", 0]]
+    },
+    "ground_riverOpen_SE": {
+      "background": [[0, "0..15", 0]]
+    },
+    "ground_riverSide_SE": {
+      "background": [[1, "0..15", 0]]
     },
     "house_type20_NW": {
       "background": [[5, 5, 0]],

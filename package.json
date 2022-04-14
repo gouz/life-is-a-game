@@ -36,6 +36,6 @@
   "staticFiles": {
     "staticPath": "src/static",
     "staticOutPath": "",
-    "watcherGlob": "**"
+    "watcherGlob": "**/*.*"
   }
 }

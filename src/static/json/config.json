@@ -3,10 +3,10 @@
     "img": "astronautA"
   },
   "start": {
-    "level": "nyons",
+    "level": "montelimar",
     "avatar": {
       "x": 9,
-      "y": 3,
+      "y": 4,
       "z": 0,
       "direction": "SW"
     }

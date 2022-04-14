@@ -1,16 +1,13 @@
 {
   "drawings": {
-    "cliff_block_rock_SE": {
+    "cliff_block_stone_SE": {
       "ground": [["0..15", "0..15", 0]]
     },
-    "grass_leafsLarge_SE": {
-      "background": [[11, 1, 0]]
+    "ground_riverOpen_SE": {
+      "background": [[0, "0..15", 0]]
     },
-    "tree_oak_NE": {
-      "foreground": [[11, 1, 0]]
-    },
-    "rock_largeD_SW": {
-      "background": [[12, 1, 0]]
+    "ground_riverSide_SE": {
+      "background": [[1, "0..15", 0]]
     }
   },
   "collisions": [[12, 1, 0]]
