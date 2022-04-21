@@ -1,10 +1,8 @@
 {
+  "title": "Valence",
   "drawings": {
-    "cliff_block_stone_SE": {
-      "ground": [["0..15", "0..7", 0]]
-    },
     "cliff_block_rock_SE": {
-      "ground": [["0..15", "8..15", 0]]
+      "ground": [["0..15", "0..15", 0]]
     },
     "ground_riverOpen_SE": {
       "background": [[0, "0..15", 0]]
@@ -16,9 +14,30 @@
       "background": [[5, 5, 0]],
       "ratio": 3.5,
       "shiftY": -2
+    },
+    "house_type14_NW": {
+      "background": [[5, 14, 0]],
+      "ratio": 3.5,
+      "shiftY": -2
+    },
+    "ground_pathStraight_NE": {
+      "background": [
+        [8, "0..4", 0],
+        [8, "6..12", 0],
+        [8, "14..15", 0]
+      ]
+    },
+    "ground_pathSplit_NW": {
+      "background": [[8, 6, 0]]
+    },
+    "ground_pathSplit_SE": {
+      "background": [
+        [8, 13, 0],
+        [8, 5, 0]
+      ]
     }
   },
-  "collisions": [["3..4", "2..5", 0]],
+  "collisions": [["0..1", "0..15", 0]],
   "doors": [
     {
       "coord": [4, 5, 0],

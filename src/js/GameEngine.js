@@ -39,6 +39,7 @@ export default class GameEngine {
           this._gamepad = new GamePad();
           this._collisionMap = [];
           this._treasureMap = [];
+          this._treasureRequirements = {};
           this._doorMap = [];
           this._doorRequirements = {};
           this._items = {};
@@ -213,6 +214,7 @@ export default class GameEngine {
     treasures?.forEach((treasure) => {
       const coord = treasure.coord.join("_");
       this._treasureMap.push(coord);
+      this._treasureRequirements[coord] = treasure.requirements;
       this._items[coord] = treasure.item;
       this._labels[treasure.item] = treasure.label;
     });
@@ -236,12 +238,12 @@ export default class GameEngine {
   }
   _drawLevel(level) {
     this._level = level;
-    this._titleElement.innerText = this._level;
     fetch(`/json/levels/${level}.json`)
       .then((response) => {
         return response.json();
       })
       .then((drawing) => {
+        this._titleElement.innerText = drawing.title;
         let objectsToLoad = [];
         this._maxZIndex = 0;
         for (const [key, value] of Object.entries(drawing.drawings)) {
@@ -359,8 +361,22 @@ export default class GameEngine {
       if (this._player.owns(item)) {
         alert(`You already own this item : ${item}`);
       } else {
-        this._player.addItem(item);
-        alert(`Congratulations you own now this : ${label}`);
+        let allOwned = 0;
+        let miss = [];
+        this._treasureRequirements[pos].forEach((requirement) => {
+          if (this._player.owns(requirement)) {
+            allOwned++;
+          } else {
+            miss.push(this._labels[requirement]);
+          }
+        });
+        if (allOwned == this._treasureRequirements[pos].length) {
+          // 🥳 all requirements are owned by the player
+          this._player.addItem(item);
+          alert(`Congratulations you own now this : ${label}`);
+        } else {
+          alert(`You miss : ${miss.join(", ")}`);
+        }
       }
     } else if (this._doorMap.includes(pos)) {
       // 🎉 there is a door !!!

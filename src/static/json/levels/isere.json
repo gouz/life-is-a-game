@@ -1,17 +1,30 @@
 {
+  "title": "Isère",
   "drawings": {
     "cliff_block_rock_SE": {
       "ground": [["0..15", "0..15", 0]]
     },
-    "grass_leafsLarge_SE": {
-      "background": [[11, 1, 0]]
-    },
     "tree_oak_NE": {
-      "foreground": [[11, 1, 0]]
+      "background": [["0..3", "0..5", 0]],
+      "foreground": [
+        ["0..7", "10..15", 0],
+        ["8..15", "0..15", 0]
+      ],
+      "ratio": 2
     },
-    "rock_largeD_SW": {
-      "background": [[12, 1, 0]]
+    "ground_pathStraight_NE": {
+      "background": [[4, "0..5", 0]]
+    },
+    "ground_pathBendBank_SW": {
+      "background": [[4, 6, 0]]
+    },
+    "ground_pathStraight_NW": {
+      "background": [["0..3", 6, 0]]
     }
   },
-  "collisions": [[12, 1, 0]]
+  "collisions": [
+    ["0..7", "7..15", 0],
+    ["6..15", "0..15", 0],
+    ["0..3", "0..5", 0]
+  ]
 }

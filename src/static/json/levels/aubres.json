@@ -1,4 +1,5 @@
 {
+  "title": "Aubres",
   "drawings": {
     "cliff_block_rock_SE": {
       "ground": [["0..15", "0..15", 0]]
@@ -12,7 +13,7 @@
     "tree_large_SW": {
       "ratio": 2,
       "z-index": 1,
-      "background": [["4..6", 9, 0]]
+      "foreground": [["4..6", 9, 0]]
     },
     "grass_leafsLarge_SE": {
       "background": [[4, 4, 0]],
@@ -107,6 +108,6 @@
     ["0..14", 15, "0"],
     ["4..12", "0..3", 0],
     [12, 12, 0],
-    [6, 9, 0]
+    ["4..6", 9, 0]
   ]
 }

@@ -1,4 +1,5 @@
 {
+  "title": "Nyons / Montélimar",
   "drawings": {
     "cliff_block_rock_SE": {
       "ground": [["0..15", "0..15", 0]]
@@ -25,6 +26,7 @@
     },
     "tree_oak_NE": {
       "background": [["2..5", "0..4", 0]],
+      "foreground": [[13, 4, 0]],
       "ratio": 2
     },
     "house_type19_NE": {
@@ -34,13 +36,38 @@
       "z-index": 2
     },
     "ground_pathStraight_SE": {
-      "background": [["9..15", 6, 0]]
+      "background": [
+        ["9..15", 6, 0],
+        ["5..7", 7, 0],
+        [7, 4, 0]
+      ]
     },
     "ground_pathEnd_NW": {
+      "background": [
+        [6, 4, 0],
+        [4, 7, 0]
+      ]
+    },
+    "ground_pathSplit_NW": {
       "background": [[8, 6, 0]]
     },
+    "ground_pathStraight_NE": {
+      "background": [
+        [8, 5, 0],
+        [8, "0..3", 0]
+      ]
+    },
+    "ground_pathBend_SW": {
+      "background": [[8, 7, 0]]
+    },
+    "ground_pathSplit_SE": {
+      "background": [[8, 4, 0]]
+    },
     "grass_leafsLarge_SE": {
-      "background": [["2..15", "7..14", 0]]
+      "background": [
+        ["9..15", 7, 0],
+        ["2..15", "8..14", 0]
+      ]
     },
     "flower_purpleC_NW": {
       "background": [
@@ -61,13 +88,24 @@
     [5, 4, 0],
     ["0..1", "0..15", 0],
     ["0..15", 15, 0],
-    ["2..4", "0..6", 0]
+    ["2..4", "0..6", 0],
+    [5, "0..3", 0],
+    [13, 4, 0]
   ],
   "treasures": [
     {
       "coord": [5, 4, 0],
       "item": "BAC",
-      "label": "Baccalauréat S spé Maths"
+      "label": "Baccalauréat S spé Maths",
+      "requirements": ["BAC_KEY"]
+    }
+  ],
+  "doors": [
+    {
+      "coord": [4, 6, 0],
+      "item": "BAC_KEY",
+      "label": "Etudes à la cité scolaire Barjavel / Roumanille de Nyons",
+      "requirements": []
     }
   ]
 }

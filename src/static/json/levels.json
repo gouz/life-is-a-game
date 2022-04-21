@@ -1,9 +1,9 @@
 {
-  "nyons": {
+  "aubres": {
     "west": "montelimar"
   },
   "montelimar": {
-    "east": "nyons",
+    "east": "aubres",
     "north": "valence"
   },
   "valence": {
