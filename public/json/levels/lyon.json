@@ -1,0 +1,54 @@
+{
+  "title": "Lyon",
+  "drawings": {
+    "cliff_block_rock_SE": {
+      "ground": [["0..15", "0..15", 0]]
+    },
+    "ground_riverOpen_SE": {
+      "background": [[0, "0..15", 0]]
+    },
+    "ground_riverSide_SE": {
+      "background": [[1, "1..15", 0]]
+    },
+    "ground_riverSide_SW": {
+      "background": [["2..15", 0, 0]]
+    },
+    "ground_riverCornerSmall_SE": {
+      "background": [[1, 0, 0]]
+    },
+    "ground_pathStraight_NW": {
+      "background": [["2..15", 6, 0]]
+    },
+    "ground_pathStraight_NE": {
+      "background": [[8, "7..15", 0]]
+    },
+    "ground_pathSplit_NE": {
+      "background": [[8, 6, 0]]
+    },
+    "bridge_center_wood_NE": {
+      "background": [["0..1", 6, 0]]
+    },
+    "house_type19_NE": {
+      "background": [
+        [5, 4, 0],
+        [8, 4, 0],
+        [11, 4, 0],
+        [14, 4, 0]
+      ],
+      "foreground": [
+        [14, 14, 0],
+        [5, 14, 0]
+      ],
+      "ratio": 3.5,
+      "shiftY": -2
+    }
+  },
+  "collisions": [
+    ["0..1", "0..5", 0],
+    ["0..1", "7..15", 0],
+    ["0..15", 0, 0],
+    ["0..13", "0..4", 0],
+    ["10..15", "9..15", 0],
+    ["2..5", "10..14", 0]
+  ]
+}

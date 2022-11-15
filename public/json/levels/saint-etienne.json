@@ -1,0 +1,45 @@
+{
+  "title": "Saint-Étienne",
+  "drawings": {
+    "cliff_block_rock_SE": {
+      "ground": [["0..15", "0..15", 0]]
+    },
+    "ground_riverOpen_SE": {
+      "background": [
+        [15, "0..15", 0],
+        ["0..1", "0..15", 0]
+      ]
+    },
+    "ground_riverSide_NW": {
+      "background": [[15, "0..15", 0]]
+    },
+    "ground_riverSide_SE": {
+      "background": [[2, "0..15", 0]]
+    },
+    "ground_pathStraight_NW": {
+      "background": [["4..14", 6, 0]]
+    },
+    "ground_pathStraight_NE": {
+      "background": [[3, "0..5", 0]]
+    },
+    "ground_pathBendBank_NW": {
+      "background": [[3, 6, 0]]
+    },
+    "bridge_center_wood_NE": {
+      "background": [[15, 6, 0]]
+    },
+    "tree_oak_NE": {
+      "foreground": [["3..14", "10..15", 0]],
+      "ratio": 2
+    },
+    "house_type19_NE": {
+      "background": [
+        [10, 4, 0],
+        [13, 4, 0]
+      ],
+      "ratio": 3.5,
+      "shiftY": -2
+    }
+  },
+  "collisions": [[12, 1, 0]]
+}

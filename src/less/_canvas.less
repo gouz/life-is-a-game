@@ -1,24 +1,27 @@
 #canvas-wrapper {
-  @apply flex items-center justify-center;
-  @apply p-20;
-  @apply rounded-lg;
-  @apply shadow-lg;
-  @apply relative;
-  @apply bg-slate-700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+  border-radius: 0.5rem;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  position: relative;
+  background-color: #334155;
 
   canvas {
-    @apply absolute;
+    position: absolute;
 
     &#board-background {
-      @apply z-0;
+      z-index: 0;
     }
 
     &#board-player {
-      @apply z-10;
+      z-index: 10;
     }
 
     &#board-foreground {
-      @apply z-20;
+      z-index: 20;
     }
   }
 }
